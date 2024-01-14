@@ -8,66 +8,53 @@ import pytest
 
 ### INTEGER INPUTS ###
 
-# Positive INT value
+# Two positive
 @pytest.fixture
-def positive_int():
-    return 5
+def pos_int_pos_int():
+    return 5, 2
 
-# Negative INT value
+# Two negative
 @pytest.fixture
-def negative_int():
-    return -3
+def neg_int_neg_int():
+    return -3, -6
 
-# Zero INT value
+# One positive, one negative
 @pytest.fixture
-def zero_int():
-    return 0
+def pos_int_neg_int():
+    return 9, -2
+
+# One negative, one positive
+@pytest.fixture
+def neg_int_pos_int():
+    return -7, 1
+
+# Two zeros
+@pytest.fixture
+def zero_zero():
+    return 0, 0
+
+# One positive, one zero
+@pytest.fixture
+def pos_int_zero():
+    return 1, 0
+
+# One zero, one positive
+@pytest.fixture
+def zero_pos_int():
+    return 0, 8
+
+# One negative, one zero
+@pytest.fixture
+def neg_int_zero():
+    return -6, 0
+
+# One zero, one negative
+@pytest.fixture
+def neg_int_zero():
+    return 0, -2
 
 ### FLOAT INPUTS ###
-
-# Positive FLOAT value
-@pytest.fixture
-def postive_float():
-    return 7.21
-
-# Negative FLOAT value
-@pytest.fixture
-def negative_float():
-    return -2.38
-
-# Zero FLOAT value
-@pytest.fixture
-def zero_float():
-    return 0.00
+#TODO: Add in permutations for FLOAT inputs
 
 ### STRING INPUTS ###
-
-# Single CHAR value
-@pytest.fixture
-def single_char():
-    return "a"
-
-# STRING value
-@pytest.fixture
-def string_val():
-    return "test"
-
-# STRING of an positive INT value
-@pytest.fixture
-def string_positive_int():
-    return "9"
-
-# STRING of an negative INT value
-@pytest.fixture
-def string_negative_int():
-    return "-8"
-
-# STRING of an positive FLOAT value
-@pytest.fixture
-def string_positive_float():
-    return "6.45"
-
-# STRING of an negative FLOAT value
-@pytest.fixture
-def string_negative_float():
-    return "-4.73"
+#TODO: Add in permutations for String inputs

@@ -1,4 +1,4 @@
-""" SimpleCalculator.py
+""" simple_calculator.py
 
 Calculator to do simple arithmetic:
     - Addition (+)
@@ -14,7 +14,7 @@ class SimpleCalculator:
     def __str__(self) -> str:
         pass
     
-    def add(x:int, y:int) -> int:
+    def add(self, x:int, y:int) -> int:
         """Adds two numbers together
 
         Args:
@@ -26,7 +26,7 @@ class SimpleCalculator:
         """
         pass
     
-    def subtract(x:int, y:int) -> int:
+    def subtract(self, x:int, y:int) -> int:
         """Subtract two numbers together
 
         Args:
@@ -38,7 +38,7 @@ class SimpleCalculator:
         """
         pass
     
-    def multiply(x:int, y:int) -> int:
+    def multiply(self, x:int, y:int) -> int:
         """Multiply two numbers together
 
         Args:
@@ -50,7 +50,7 @@ class SimpleCalculator:
         """
         pass
     
-    def divide(x:int, y:int) -> int:
+    def divide(self, x:int, y:int) -> int:
         """Divides two numbers together
 
         Args:

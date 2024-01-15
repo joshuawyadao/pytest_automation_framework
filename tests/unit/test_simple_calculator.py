@@ -74,3 +74,23 @@ def test_subtraction_int(calculator, sub_int, expected_sub_int, request):
 def test_multiplication_int(calculator, mult_int, expected_mult_int, request):
     x, y = request.getfixturevalue(mult_int)
     assert calculator.multiply(x, y) == expected_mult_int
+    
+# Parametrize integer inputs for DIVISION 
+@pytest.mark.parametrize("div_int, expected_div_int", [
+    ("pos_int_pos_int", 2.5),                   # Div two positive ints
+    ("neg_int_neg_int", 0.5),                   # Div two negative ints
+    ("pos_int_neg_int", -4.5),                  # Div one positive, one negative ints
+    ("neg_int_pos_int", -7),                    # Div one negative, one positive ints
+    ("zero_int_zero_int", ZeroDivisionError),   # Div two zeros ints
+    ("pos_int_zero_int", ZeroDivisionError),    # Div one positive, one zero ints
+    ("zero_int_pos_int", 0),                    # Div one zero, one positive ints
+    ("neg_int_zero_int", ZeroDivisionError),    # Div one negative, one zero ints
+    ("zero_int_neg_int", 0),                    # Div one zero, one negative ints
+])
+
+# Test division function
+@pytest.mark.int_input
+@pytest.mark.division
+def test_division_int(calculator, div_int, expected_div_int, request):
+    x, y = request.getfixturevalue(div_int)
+    assert calculator.divide(x, y) == expected_div_int

@@ -50,7 +50,7 @@ class SimpleCalculator:
         """
         pass
     
-    def divide(self, x:int, y:int) -> int:
+    def divide(self, x:int, y:int) -> float:
         """Divides two numbers together
 
         Args:

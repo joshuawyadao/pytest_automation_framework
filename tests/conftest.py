@@ -4,14 +4,7 @@ Configuration file for PyTest
 
 """
 
-import pytest,sys
-sys.path.insert(0, './calculator')
-from simple_calculator import SimpleCalculator
-
-# Create a calculator object to run the Simple Calculator Test Suite
-@pytest.fixture(scope="module")
-def simple_calculator():
-    return SimpleCalculator()
+import pytest
 
 ### INTEGER INPUTS ###
 
@@ -82,7 +75,7 @@ def char_str():
 def str_char():
     return "happy", "v"
 
-## Combination of String and INT inputs ##
+### COMBINATION INPUTS ###
 
 # One positive int, one positive string
 @pytest.fixture(scope="session")

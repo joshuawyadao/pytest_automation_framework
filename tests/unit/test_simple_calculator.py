@@ -94,3 +94,7 @@ def test_multiplication_int(calculator, mult_int, expected_mult_int, request):
 def test_division_int(calculator, div_int, expected_div_int, request):
     x, y = request.getfixturevalue(div_int)
     assert calculator.divide(x, y) == expected_div_int
+
+# TODO: Add in test suite for String inputs
+
+# TODO: Add in test suite for the cominbation inputs

@@ -55,22 +55,22 @@ def test_subtraction_int(calculator, sub_int, expected_sub_int, request):
     x, y = request.getfixturevalue(sub_int)
     assert calculator.subtract(x, y) == expected_sub_int
     
-# # Parametrize integer inputs for MULTIPLICATION 
-# @pytest.mark.parametrize("mult_int, expected_mult_int", [
-#     ("pos_int_pos_int", 10),    # Multi two positive ints
-#     ("neg_int_neg_int", 18),    # Multi two negative ints
-#     ("pos_int_neg_int", -18),   # Multi one positive, one negative ints
-#     ("neg_int_pos_int", -7),    # Multi one negative, one positive ints
-#     ("zero_int_zero_int", 0),   # Multi two zeros ints
-#     ("pos_int_zero_int", 0),    # Multi one positive, one zero ints
-#     ("zero_int_pos_int", 0),    # Multi one zero, one positive ints
-#     ("neg_int_zero_int", 0),    # Multi one negative, one zero ints
-#     ("zero_int_neg_int", 0),    # Multi one zero, one negative ints
-# ])
+# Parametrize integer inputs for MULTIPLICATION 
+@pytest.mark.parametrize("mult_int, expected_mult_int", [
+    ("pos_int_pos_int", 10),    # Multi two positive ints
+    ("neg_int_neg_int", 18),    # Multi two negative ints
+    ("pos_int_neg_int", -18),   # Multi one positive, one negative ints
+    ("neg_int_pos_int", -7),    # Multi one negative, one positive ints
+    ("zero_int_zero_int", 0),   # Multi two zeros ints
+    ("pos_int_zero_int", 0),    # Multi one positive, one zero ints
+    ("zero_int_pos_int", 0),    # Multi one zero, one positive ints
+    ("neg_int_zero_int", 0),    # Multi one negative, one zero ints
+    ("zero_int_neg_int", 0),    # Multi one zero, one negative ints
+])
 
-# # Test multiplication function
-# @pytest.mark.int_input
-# @pytest.mark.multiplication
-# def test_multiplication_int(calculator, mult_int, expected_mult_int, request):
-#     x, y = request.getfixturevalue(mult_int)
-#     assert calculator.multiply(x, y) == expected_mult_int
+# Test multiplication function
+@pytest.mark.int_input
+@pytest.mark.multiplication
+def test_multiplication_int(calculator, mult_int, expected_mult_int, request):
+    x, y = request.getfixturevalue(mult_int)
+    assert calculator.multiply(x, y) == expected_mult_int

@@ -1,4 +1,5 @@
 # Ignore __pycache__
+.pytest_cache
 .calculator/__pycache__
 .tests/__pycache__
-.pytest_cache
+.tests/test_simple_calculator/__pycache__

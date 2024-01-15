@@ -4,7 +4,14 @@ Configuration file for PyTest
 
 """
 
-import pytest
+import pytest,sys
+sys.path.insert(0, './calculator')
+from simple_calculator import SimpleCalculator
+
+# Create a calculator object to run the Simple Calculator Test Suite
+@pytest.fixture(scope="module")
+def simple_calculator():
+    return SimpleCalculator()
 
 ### INTEGER INPUTS ###
 
@@ -50,7 +57,7 @@ def neg_int_zero_int():
 
 # One zero, one negative
 @pytest.fixture(scope="session")
-def neg_int_zero_int():
+def zero_int_neg_int():
     return 0, -2
 
 ### STRING INPUTS ###

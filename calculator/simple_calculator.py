@@ -11,9 +11,6 @@ class SimpleCalculator:
     def __init__(self) -> None:
         pass
     
-    def __str__(self) -> str:
-        pass
-    
     def add(self, x:int, y:int) -> int:
         """Adds two numbers together
 

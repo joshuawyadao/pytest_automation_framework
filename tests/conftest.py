@@ -75,6 +75,26 @@ def char_str():
 def str_char():
     return "happy", "v"
 
+# Two strings of positive ints
+@pytest.fixture(scope="session")
+def pos_str_pos_str():
+    return "3", "5"
+
+# Two strings of negative ints
+@pytest.fixture(scope="session")
+def neg_str_neg_str():
+    return "-7", "-4"
+
+# Two strings of one positive, one negative
+@pytest.fixture(scope="session")
+def pos_str_neg_str():
+    return "6", "-8"
+
+# Two strings of one negative, one positive
+@pytest.fixture(scope="session")
+def neg_str_pos_str():
+    return "-2", "5"
+
 ### COMBINATION INPUTS ###
 
 # One positive int, one positive string

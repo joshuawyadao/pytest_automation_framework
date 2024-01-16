@@ -13,7 +13,10 @@ from simple_calculator import SimpleCalculator
 def calculator():
     return SimpleCalculator()
 
-### INT INPUTS ###
+# TODO: Add constants at the top of the file to make it easier to mass adjust the test suites
+# TODO: Consider refactoring this file into multiple files to make it easier to navigate
+
+### INTEGER INPUTS ###
 
 # Parametrize integer inputs for ADDITION
 @pytest.mark.parametrize("add_int, expected_add_int", [
@@ -26,9 +29,9 @@ def calculator():
     ("zero_int_pos_int", 8),    # Add one zero, one positive ints
     ("neg_int_zero_int", -6),   # Add one negative, one zero ints
     ("zero_int_neg_int", -2),   # Add one zero, one negative ints
-])
+], scope="module")
 
-# Test addition function
+# Test addition function with integer inputs
 @pytest.mark.int_input
 @pytest.mark.addition
 def test_addition_int(calculator, add_int, expected_add_int, request):
@@ -46,9 +49,9 @@ def test_addition_int(calculator, add_int, expected_add_int, request):
     ("zero_int_pos_int", -8),   # Sub one zero, one positive ints
     ("neg_int_zero_int", -6),   # Sub one negative, one zero ints
     ("zero_int_neg_int", 2),    # Sub one zero, one negative ints
-])
+], scope="module")
 
-# Test subtraction function
+# Test subtraction function with integer inputs
 @pytest.mark.int_input
 @pytest.mark.subtraction
 def test_subtraction_int(calculator, sub_int, expected_sub_int, request):
@@ -66,9 +69,9 @@ def test_subtraction_int(calculator, sub_int, expected_sub_int, request):
     ("zero_int_pos_int", 0),    # Multi one zero, one positive ints
     ("neg_int_zero_int", 0),    # Multi one negative, one zero ints
     ("zero_int_neg_int", 0),    # Multi one zero, one negative ints
-])
+], scope="module")
 
-# Test multiplication function
+# Test multiplication function with integer inputs
 @pytest.mark.int_input
 @pytest.mark.multiplication
 def test_multiplication_int(calculator, mult_int, expected_mult_int, request):
@@ -86,15 +89,117 @@ def test_multiplication_int(calculator, mult_int, expected_mult_int, request):
     ("zero_int_pos_int", 0),                    # Div one zero, one positive ints
     ("neg_int_zero_int", ZeroDivisionError),    # Div one negative, one zero ints
     ("zero_int_neg_int", 0),                    # Div one zero, one negative ints
-])
+], scope="module")
 
-# Test division function
+# Test division function with integer inputs
 @pytest.mark.int_input
 @pytest.mark.division
 def test_division_int(calculator, div_int, expected_div_int, request):
     x, y = request.getfixturevalue(div_int)
     assert calculator.divide(x, y) == expected_div_int
 
-# TODO: Add in test suite for String inputs
+### STRING INPUTS ###
 
-# TODO: Add in test suite for the cominbation inputs
+# Tests cases for string inputs that will be used for all arithmetic (should always result in TypeError)
+string_test_cases = ("arith_str, expected_str", [
+    ("char_char", TypeError),       # Two chars
+    ("str_str", TypeError),         # Two strings
+    ("char_str", TypeError),        # One char, one string
+    ("str_char", TypeError),        # One string, one char
+    ("pos_str_pos_str", TypeError), # Two strings of positive ints
+    ("neg_str_neg_str", TypeError), # Two strings of negative ints
+    ("pos_str_neg_str", TypeError), # Two strings of one positive, one negative
+    ("neg_str_pos_str", TypeError), # Two strings of one negative, one positive
+])
+
+# Parametrize integer inputs for ADDITION 
+@pytest.mark.parametrize(*string_test_cases, scope="module") 
+
+# Test addition function with string inputs
+@pytest.mark.str_input
+@pytest.mark.addition
+def test_addition_str(calculator, arith_str, expected_str, request):
+    x, y = request.getfixturevalue(arith_str)
+    assert calculator.add(x, y) == expected_str
+    
+# Parametrize integer inputs for SUBTRACTION 
+@pytest.mark.parametrize(*string_test_cases, scope="module") 
+
+# Test subtraction function with string inputs
+@pytest.mark.str_input
+@pytest.mark.subtraction
+def test_subtraction_str(calculator, arith_str, expected_str, request):
+    x, y = request.getfixturevalue(arith_str)
+    assert calculator.subtract(x, y) == expected_str
+    
+# Parametrize integer inputs for MULTIPLICATION 
+@pytest.mark.parametrize(*string_test_cases, scope="module")     
+    
+# Test multiplication function with string inputs
+@pytest.mark.str_input
+@pytest.mark.multiplication
+def test_multiplication_str(calculator, arith_str, expected_str, request):
+    x, y = request.getfixturevalue(arith_str)
+    assert calculator.multiply(x, y) == expected_str
+    
+# Parametrize integer inputs for DIVISION 
+@pytest.mark.parametrize(*string_test_cases, scope="module")     
+    
+# Test division function with string inputs
+@pytest.mark.str_input
+@pytest.mark.division
+def test_division_str(calculator, arith_str, expected_str, request):
+    x, y = request.getfixturevalue(arith_str)
+    assert calculator.divide(x, y) == expected_str
+
+### COMBINATION INPUTS ###
+
+# Tests cases for combination inputs that will be used for all arithmetic (should always result in TypeError)
+combo_test_cases = ("arith_combo, expected_combo", [
+    ("pos_int_str", TypeError),     # One positive int, one positive string
+    ("str_pos_int", TypeError),     # One positive string, one positive int
+    ("neg_int_str", TypeError),     # One neg int, one positive string
+    ("str_neg_int", TypeError),     # One string, one neg int
+    ("zero_int_str", TypeError),    # One zero int, one string
+    ("str_zero_int", TypeError),    # One string, one zero int
+])
+
+# Parametrize integer inputs for ADDITION 
+@pytest.mark.parametrize(*combo_test_cases, scope="module") 
+
+# Test addition function with string inputs
+@pytest.mark.combo_input
+@pytest.mark.addition
+def test_addition_combo(calculator, arith_combo, expected_combo, request):
+    x, y = request.getfixturevalue(arith_combo)
+    assert calculator.add(x, y) == expected_combo
+    
+# Parametrize integer inputs for SUBTRACTION 
+@pytest.mark.parametrize(*combo_test_cases, scope="module") 
+
+# Test subtraction function with string inputs
+@pytest.mark.combo_input
+@pytest.mark.subtraction
+def test_subtraction_combo(calculator, arith_combo, expected_combo, request):
+    x, y = request.getfixturevalue(arith_combo)
+    assert calculator.subtract(x, y) == expected_combo
+    
+# Parametrize integer inputs for MULTIPLICATION 
+@pytest.mark.parametrize(*combo_test_cases, scope="module")     
+    
+# Test multiplication function with string inputs
+@pytest.mark.combo_input
+@pytest.mark.multiplication
+def test_multiplication_combo(calculator, arith_combo, expected_combo, request):
+    x, y = request.getfixturevalue(arith_combo)
+    assert calculator.multiply(x, y) == expected_combo
+    
+# Parametrize integer inputs for DIVISION 
+@pytest.mark.parametrize(*combo_test_cases, scope="module")     
+    
+# Test division function with string inputs
+@pytest.mark.combo_input
+@pytest.mark.division
+def test_division_combo(calculator, arith_combo, expected_combo, request):
+    x, y = request.getfixturevalue(arith_combo)
+    assert calculator.divide(x, y) == expected_combo

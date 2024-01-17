@@ -55,7 +55,12 @@ class SimpleCalculator:
         Returns:
             int: product
         """
-        pass
+        # Verify inputs are INT
+        if not isinstance(x, int) or not isinstance(y, int):
+            raise TypeError
+        
+        # Return sum
+        return x * y
     
     def divide(self, x:int, y:int) -> float:
         """Divides two numbers together

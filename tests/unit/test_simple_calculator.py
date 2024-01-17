@@ -4,8 +4,9 @@ Unit test suite to test the Simple Calculator
 
 """
 
-import pytest, sys
+import sys
 from contextlib import nullcontext as does_not_raise
+import pytest
 sys.path.insert(0, '././calculator')
 from simple_calculator import SimpleCalculator
 

@@ -1,16 +1,20 @@
-""" simple_calculator.py
+"""simple_calculator.py
 
-Calculator to do simple arithmetic:
-    - Addition (+)
-    - Subtraction (-)
-    - Multiplication (*)
-    - Division (/)
+Raises:
+    TypeError: if any of the inputs are not INT
+    ZeroDivisionError: if the calculator tries to divide by zero
 
+Returns:
+    int: result of the calculation (addition, subtraction, multiplication, division)
 """
 class SimpleCalculator:
-    def __init__(self) -> None:
-        pass
-    
+    """ Calculator to do simple arithmetic:
+        - Addition (+)
+        - Subtraction (-)
+        - Multiplication (*)
+        - Division (/)
+    """
+
     def add(self, x:int, y:int) -> int:
         """Adds two numbers together
 
@@ -24,7 +28,6 @@ class SimpleCalculator:
         # Verify inputs are INT
         if not isinstance(x, int) or not isinstance(y, int):
             raise TypeError
-        
         # Return sum
         return x + y
     
@@ -41,7 +44,6 @@ class SimpleCalculator:
         # Verify inputs are INT
         if not isinstance(x, int) or not isinstance(y, int):
             raise TypeError
-        
         # Return difference
         return x - y
     
@@ -58,7 +60,6 @@ class SimpleCalculator:
         # Verify inputs are INT
         if not isinstance(x, int) or not isinstance(y, int):
             raise TypeError
-        
         # Return product
         return x * y
     
@@ -75,9 +76,8 @@ class SimpleCalculator:
         # Verify inputs are INT
         if not isinstance(x, int) or not isinstance(y, int):
             raise TypeError
-        
         # Try to return quotient
         try:
             return x / y
-        except ZeroDivisionError:
-            raise ZeroDivisionError
+        except ZeroDivisionError as exc:
+            raise ZeroDivisionError from exc

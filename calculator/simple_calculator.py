@@ -42,7 +42,7 @@ class SimpleCalculator:
         if not isinstance(x, int) or not isinstance(y, int):
             raise TypeError
         
-        # Return sum
+        # Return difference
         return x - y
     
     def multiply(self, x:int, y:int) -> int:
@@ -55,7 +55,12 @@ class SimpleCalculator:
         Returns:
             int: product
         """
-        pass
+        # Verify inputs are INT
+        if not isinstance(x, int) or not isinstance(y, int):
+            raise TypeError
+        
+        # Return product
+        return x * y
     
     def divide(self, x:int, y:int) -> float:
         """Divides two numbers together
@@ -67,4 +72,12 @@ class SimpleCalculator:
         Returns:
             int: quotient
         """
-        pass
+        # Verify inputs are INT
+        if not isinstance(x, int) or not isinstance(y, int):
+            raise TypeError
+        
+        # Try to return quotient
+        try:
+            return x / y
+        except ZeroDivisionError:
+            raise ZeroDivisionError

@@ -52,15 +52,15 @@ MULT_INT_TEST_CASES = ("mult_int, expected_mult_int", [
 
 # 1.4. Division w/ INT inputs
 DIV_INT_TEST_CASES = ("div_int, expected_div_int, error_int", [
-    ("pos_int_pos_int", 2.5, does_not_raise()),     # 1.1. Div two positive ints
-    ("neg_int_neg_int", 0.5, does_not_raise()),     # 1.2. Div two negative ints
-    ("pos_int_neg_int", -4.5, does_not_raise()),    # 1.3. Div one positive, one negative ints
-    ("neg_int_pos_int", -7, does_not_raise()),      # 1.4. Div one negative, one positive ints
-    ("zero_int_zero_int", 0, ZeroDivisionError),    # 1.5. Div two zeros ints
-    ("pos_int_zero_int", 0, ZeroDivisionError),     # 1.6. Div one positive, one zero ints
-    ("zero_int_pos_int", 0, does_not_raise()),      # 1.7. Div one zero, one positive ints
-    ("neg_int_zero_int", 0, ZeroDivisionError),     # 1.8. Div one negative, one zero ints
-    ("zero_int_neg_int", 0, does_not_raise()),      # 1.9. Div one zero, one negative ints
+    ("pos_int_pos_int", 2.5, does_not_raise()),                 # 1.1. Div two positive ints
+    ("neg_int_neg_int", 0.5, does_not_raise()),                 # 1.2. Div two negative ints
+    ("pos_int_neg_int", -4.5, does_not_raise()),                # 1.3. Div one positive, one negative ints
+    ("neg_int_pos_int", -7, does_not_raise()),                  # 1.4. Div one negative, one positive ints
+    ("zero_int_zero_int", 0, pytest.raises(ZeroDivisionError)), # 1.5. Div two zeros ints
+    ("pos_int_zero_int", 0, pytest.raises(ZeroDivisionError)),  # 1.6. Div one positive, one zero ints
+    ("zero_int_pos_int", 0, does_not_raise()),                  # 1.7. Div one zero, one positive ints
+    ("neg_int_zero_int", 0, pytest.raises(ZeroDivisionError)),  # 1.8. Div one negative, one zero ints
+    ("zero_int_neg_int", 0, does_not_raise()),                  # 1.9. Div one zero, one negative ints
 ])
 
 # 1.5. All arithmetic w/ STR inputs (always result in TypeError)

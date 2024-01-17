@@ -21,7 +21,7 @@ class SimpleCalculator:
         Returns:
             int: sum
         """
-        # Validate inputs
+        # Verify inputs are INT
         if not isinstance(x, int) or not isinstance(y, int):
             raise TypeError
         
@@ -38,7 +38,12 @@ class SimpleCalculator:
         Returns:
             int: difference
         """
-        pass
+        # Verify inputs are INT
+        if not isinstance(x, int) or not isinstance(y, int):
+            raise TypeError
+        
+        # Return sum
+        return x - y
     
     def multiply(self, x:int, y:int) -> int:
         """Multiply two numbers together

@@ -13,9 +13,6 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Start project virtual environment
-        run: |
-          source projectEnv/bin/activate
       - name: Install packages from requirements.txt
         run: |
           pip install -r requirements.txt

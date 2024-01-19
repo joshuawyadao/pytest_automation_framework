@@ -10,12 +10,9 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
       - name: Install packages from requirements.txt
         run: |
           pip install -r requirements.txt
-      - name: Verify pip packages have been installed
+      - name: Run PyTest Unit Suite
         run: |
-          pip list
+          pytest tests

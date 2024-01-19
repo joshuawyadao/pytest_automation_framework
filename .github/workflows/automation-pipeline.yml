@@ -27,6 +27,7 @@ jobs:
           add: './html_reports/unit_test'
           default_author: github_actions
           message: 'Saving Unit Test Suite Report to branch'
+          push: origin ${{ github.ref }} --force
 
   Issue-On-Unit-Test-Fail:
     needs: Run-Unit-Test-Suite

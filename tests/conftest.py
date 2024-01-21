@@ -5,8 +5,40 @@ Configuration file for PyTest
 """
 
 import pytest
+from datetime import datetime
 
+##################################
 ### PY-TEST HTML CONFIGURATION ###
+##################################
+
+# Title of the report
+def pytest_html_report_title(report):
+    report.title = "Unit Test Report"
+
+# Results Table Header
+def pytest_html_results_table_header(cells):
+    del cells[:]
+    cells.insert(0, '<th class="sortable time" data-column-type="time">Time</th>')
+    cells.insert(1, "<th>Test Case</th>")
+    cells.insert(2, "<th>Results</th>")
+    cells.insert(3, "<th>Duration</th>")
+
+# Results Table Row
+# def pytest_html_results_table_row(report, cells):
+#     cells.insert(2, f"<td>{report.description}</td>")
+#     cells.insert(1, f'<td class="col-time">{datetime.utcnow()}</td>')
+
+# @pytest.hookimpl(hookwrapper=True)
+# def pytest_runtest_makereport(item, call):
+#     outcome = yield
+#     report = outcome.get_result()
+#     report.description = str(item.function.__doc__)
+    
+#     print(f"cells = {cells}")
+#     del cells[1]
+#     cells.insert(0, html.td(datetime.utcnow(), class_='col-time'))
+#     cells.insert(1, html.td(report.testcase))
+#     cells.pop()
 
 #########################
 ### 1. INTEGER INPUTS ###

@@ -10,7 +10,9 @@ import pytest
 sys.path.insert(0, '././calculator')
 from simple_calculator import SimpleCalculator
 
+#####################
 ### 1. TEST CASES ###
+#####################
 
 # 1.1. Addition w/ INT inputs
 ADD_INT_TEST_CASES = ("add_int, expected_add_int", [
@@ -86,14 +88,18 @@ COMBO_TEST_CASES = ("arith_combo, expected_combo, error_combo",[
     ("str_zero_int", 0, pytest.raises(TypeError)),    # 3.6. One string, one zero int
 ])
 
+############################
 ### 2. CALCULATOR OBJECT ###
+############################
 
 # Create a calculator object to run the Simple Calculator Test Suite
 @pytest.fixture(scope="module")
 def calculator():
     return SimpleCalculator()
 
+################
 ### 3. TESTS ###
+################
 
 ### 3.1. INTEGER INPUTS ###
 

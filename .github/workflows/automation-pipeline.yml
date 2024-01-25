@@ -4,6 +4,7 @@ name: CI/CD Pipeline
 
 on: push
 
+permissions: write-all
 
 jobs:
   Run-Unit-Test-Suite:
@@ -11,6 +12,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+        # with:
+        #   token: ${{ secrets.ACTIONS_PAT }}
       - name: Set up Python 3.10
         uses: actions/setup-python@v5
         with:

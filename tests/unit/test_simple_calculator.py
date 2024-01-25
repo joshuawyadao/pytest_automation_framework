@@ -104,6 +104,7 @@ def calculator():
 ### 3.1. INTEGER INPUTS ###
 
 # 3.1.1. Addition w/ INT inputs
+@pytest.mark.order(1)
 @pytest.mark.parametrize(*ADD_INT_TEST_CASES, scope="module")
 @pytest.mark.int_input
 @pytest.mark.addition
@@ -115,6 +116,7 @@ def test_addition_int(calculator, add_int, expected_add_int, test_case_name, req
     assert calculator.add(x, y) == expected_add_int
     
 # 3.1.2. Subtraction w/ INT inputs
+@pytest.mark.order(2)
 @pytest.mark.parametrize(*SUB_INT_TEST_CASES, scope="module")
 @pytest.mark.int_input
 @pytest.mark.subtraction
@@ -126,6 +128,7 @@ def test_subtraction_int(calculator, sub_int, expected_sub_int, test_case_name, 
     assert calculator.subtract(x, y) == expected_sub_int
     
 # 3.1.3. Multiplication w/ INT inputs
+@pytest.mark.order(3)
 @pytest.mark.parametrize(*MULT_INT_TEST_CASES, scope="module")
 @pytest.mark.int_input
 @pytest.mark.multiplication
@@ -137,6 +140,7 @@ def test_multiplication_int(calculator, mult_int, expected_mult_int, test_case_n
     assert calculator.multiply(x, y) == expected_mult_int
     
 # 3.1.4. Division w/ INT inputs
+@pytest.mark.order(4)
 @pytest.mark.parametrize(*DIV_INT_TEST_CASES, scope="module")
 @pytest.mark.int_input
 @pytest.mark.division
@@ -151,6 +155,7 @@ def test_division_int(calculator, div_int, expected_div_int, error_int, test_cas
 ### 3.2. STRING INPUTS ###
 
 # 3.2.1. Addition w/ STR inputs
+@pytest.mark.order(5)
 @pytest.mark.parametrize(*STRING_TEST_CASES, scope="module")
 @pytest.mark.str_input
 @pytest.mark.addition
@@ -163,6 +168,7 @@ def test_addition_str(calculator, arith_str, expected_str, error_str, test_case_
         assert calculator.add(x, y) == expected_str
     
 # 3.2.2. Subtraction w/ STR inputs
+@pytest.mark.order(6)
 @pytest.mark.parametrize(*STRING_TEST_CASES, scope="module") 
 @pytest.mark.str_input
 @pytest.mark.subtraction
@@ -174,7 +180,8 @@ def test_subtraction_str(calculator, arith_str, expected_str, error_str, test_ca
         x, y = request.getfixturevalue(arith_str)
         assert calculator.subtract(x, y) == expected_str
     
-# 3.2.3. Multiplication w/ STR inputs 
+# 3.2.3. Multiplication w/ STR inputs
+@pytest.mark.order(7) 
 @pytest.mark.parametrize(*STRING_TEST_CASES, scope="module")
 @pytest.mark.str_input
 @pytest.mark.multiplication
@@ -187,6 +194,7 @@ def test_multiplication_str(calculator, arith_str, expected_str, error_str, test
         assert calculator.multiply(x, y) == expected_str
     
 # 3.2.4. Division w/ STR inputs 
+@pytest.mark.order(8)
 @pytest.mark.parametrize(*STRING_TEST_CASES, scope="module")
 @pytest.mark.str_input
 @pytest.mark.division
@@ -201,6 +209,7 @@ def test_division_str(calculator, arith_str, expected_str, error_str, test_case_
 ### 3.3. COMBINATION INPUTS ###
 
 # 3.3.1. Addition w/ COMBO inputs 
+@pytest.mark.order(9)
 @pytest.mark.parametrize(*COMBO_TEST_CASES, scope="module")
 @pytest.mark.combo_input
 @pytest.mark.addition
@@ -213,6 +222,7 @@ def test_addition_combo(calculator, arith_combo, expected_combo, error_combo, te
         assert calculator.add(x, y) == expected_combo
     
 # 3.3.2. Subtraction w/ COMBO inputs 
+@pytest.mark.order(10)
 @pytest.mark.parametrize(*COMBO_TEST_CASES, scope="module") 
 @pytest.mark.combo_input
 @pytest.mark.subtraction
@@ -224,7 +234,8 @@ def test_subtraction_combo(calculator, arith_combo, expected_combo, error_combo,
         x, y = request.getfixturevalue(arith_combo)
         assert calculator.subtract(x, y) == expected_combo
     
-# 3.3.3. Multiplication w/ COMBO inputs 
+# 3.3.3. Multiplication w/ COMBO inputs
+@pytest.mark.order(11) 
 @pytest.mark.parametrize(*COMBO_TEST_CASES, scope="module")
 @pytest.mark.combo_input
 @pytest.mark.multiplication
@@ -237,6 +248,7 @@ def test_multiplication_combo(calculator, arith_combo, expected_combo, error_com
         assert calculator.multiply(x, y) == expected_combo
     
 # 3.3.4. Division w/ COMBO inputs 
+@pytest.mark.order(12)
 @pytest.mark.parametrize(*COMBO_TEST_CASES, scope="module")
 @pytest.mark.combo_input
 @pytest.mark.division

@@ -19,6 +19,7 @@ def pytest_html_report_title(report):
 def pytest_runtest_makereport(item, call):
     outcome = yield
     report = outcome.get_result() 
+    # Get the test case docstring to display
     test_fn = item.obj
     docstring = getattr(test_fn, '__doc__')
     if docstring:

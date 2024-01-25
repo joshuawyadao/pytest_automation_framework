@@ -5,8 +5,29 @@ Configuration file for PyTest
 """
 
 import pytest
+from datetime import datetime
 
+##################################
+### PY-TEST HTML CONFIGURATION ###
+##################################
+
+# Title of the report
+def pytest_html_report_title(report):
+    report.title = "Unit Test Report"
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    report = outcome.get_result() 
+    # Get the test case docstring to display
+    test_fn = item.obj
+    docstring = getattr(test_fn, '__doc__')
+    if docstring:
+        report.nodeid = docstring
+
+#########################
 ### 1. INTEGER INPUTS ###
+#########################
 
 # 1.1. Two positive
 @pytest.fixture(scope="session")
@@ -53,7 +74,9 @@ def neg_int_zero_int():
 def zero_int_neg_int():
     return 0, -2
 
+########################
 ### 2. STRING INPUTS ###
+########################
 
 # 2.1. Two chars
 @pytest.fixture(scope="session")
@@ -95,7 +118,9 @@ def pos_str_neg_str():
 def neg_str_pos_str():
     return "-2", "5"
 
+#############################
 ### 3. COMBINATION INPUTS ###
+#############################
 
 # 3.1. One positive int, one positive string
 @pytest.fixture(scope="session")

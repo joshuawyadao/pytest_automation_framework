@@ -11,12 +11,6 @@ jobs:
   Run-Unit-Test-Suite:
     runs-on: ubuntu-latest
     steps:
-      # - name: Temporarily disable "Do not allow bypassing the above settings" branch protection
-      #   uses: benjefferies/branch-protection-bot@master
-      #   if: always()
-      #   with:
-      #     access_token: ${{ secrets.ACTIONS_PAT }}
-      #     branch: ${{ github.ref }}
       - name: Check out repository code
         uses: actions/checkout@v4
         with:
@@ -39,12 +33,6 @@ jobs:
           default_author: github_actions
           message: 'Saving Unit Test Suite Report to branch'
           push: origin ${{ github.ref }} --force
-      # - name: Enable "Do not allow bypassing the above settings" branch protection
-      #   uses: benjefferies/branch-protection-bot@master
-      #   if: always()
-      #   with:
-      #     access_token: ${{ secrets.ACTIONS_PAT }}
-      #     branch: ${{ github.ref }}
 
   # Issue-On-Unit-Test-Fail:
   #   needs: Run-Unit-Test-Suite

@@ -4,7 +4,6 @@ name: CI/CD Pipeline
 
 on: push
 
-
 permissions: write-all
 
 jobs:
@@ -31,7 +30,7 @@ jobs:
         with: 
           add: './html_reports/unit_test'
           default_author: github_actions
-          message: 'Saving Unit Test Suite Report to branch'
+          message: '[no ci] Saving Unit Test Suite Report to branch'
           push: origin ${{ github.ref }} --force
 
   # Issue-On-Unit-Test-Fail:

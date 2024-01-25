@@ -4,6 +4,7 @@ name: CI/CD Pipeline
 
 on: push
 
+
 permissions: write-all
 
 jobs:
@@ -38,7 +39,7 @@ jobs:
           push: origin ${{ github.ref }} --force
       - name: Enable "Do not allow bypassing the above settings" branch protection
         uses: benjefferies/branch-protection-bot@master
-        if: always()  # Force to always run this step to ensure "Do not allow bypassing the above settings" is always turned back on
+        if: always()
         with:
           access_token: ${{ secrets.ACTIONS_PAT }}
           branch: ${{ github.ref }}

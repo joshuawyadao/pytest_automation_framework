@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-        # with:
-        #   token: ${{ secrets.ACTIONS_PAT }}
+        with:
+          token: ${{ secrets.ACTIONS_PAT }}
       - name: Set up Python 3.10
         uses: actions/setup-python@v5
         with:
@@ -30,7 +30,7 @@ jobs:
         with: 
           add: './html_reports/unit_test'
           default_author: github_actions
-          message: 'Saving Unit Test Suite Report to branch'
+          message: '[no ci] Saving Unit Test Suite Report to branch'
           push: origin ${{ github.ref }} --force
 
   # Issue-On-Unit-Test-Fail:

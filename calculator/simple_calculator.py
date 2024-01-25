@@ -29,7 +29,7 @@ class SimpleCalculator:
         if not isinstance(x, int) or not isinstance(y, int):
             raise TypeError
         # Return sum
-        return x + y
+        return x - y
     
     def subtract(self, x:int, y:int) -> int:
         """Subtract two numbers together

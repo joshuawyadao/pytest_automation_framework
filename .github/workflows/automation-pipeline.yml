@@ -4,6 +4,8 @@ name: CI/CD Pipeline
 
 on: push
 
+permissions: read-all
+
 jobs:
   Run-Unit-Test-Suite:
     runs-on: ubuntu-latest
